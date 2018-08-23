@@ -11,27 +11,18 @@
 				<label>Tambah Data Buku</label>
 			</div> -->
 			<div class="panel-body bgtable">
-			<?php echo $alert;?>
-				<form method="post" class="form-horizontal">
+				<form method="post" class="form-horizontal" action="<?php echo base_url("index.php/Code/action_tambah") ?>">
 
 					<div class="form-group">
 						<!-- <label class="control-label col-md-2" ></label> -->
 						<div class="col-md-12">
-							<input type="text" name="code"class="form-control" placeholder="Voucher Code" value="<?php echo $satu['code'];?>">
+							<input type="text" name="redeemcode"class="form-control" placeholder="Voucher Code" required="true">
 						</div>
 					</div>
-
-					<div class="form-group">
-						<!-- <label class="control-label col-md-2"></label> -->
-						<div class="col-md-12">
-							<input type="text" name="status" class="form-control" placeholder="Status" disabled="true"> value="<?php echo $satu['status'];?>">
-						</div>
-					</div>
-
 					
 					<div class="form-group">
 						<!-- <div class="col-md-2"> -->
-							<input type="hidden" name="id" value="<?php echo $satu['id'];?>">
+						<input type="hidden" name="id">
 						<div class="col-md-12">
 							
 							<button type="submit" name="simpan" class="btn btn-info" value="Simpan">

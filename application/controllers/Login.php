@@ -7,8 +7,11 @@ class Login extends CI_Controller{
 	public function process(){
 		$user = $this->input->post('user');
 		$pass = $this->input->post('pass');
-		if ($user=='juhi' && $pass=='123') 
+
+		if ($user=='admin' && $pass=='admin123') 
 		{
+			// echo "sukses";
+			// die;
 			//declaring session
 			$this->session->set_userdata(array('user'=>$user));
 			$this->load->view('home');

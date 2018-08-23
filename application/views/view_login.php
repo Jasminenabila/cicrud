@@ -70,11 +70,11 @@ div.artikel div.grup{
             <form action="#" method="post">
                 <div class="grup">
                     <label for="user">Username</label>
-                    <input type="text" placeholder="Masukkan Alamat Email Anda">
+                    <input type="text" name="user" placeholder="Masukkan Alamat Email Anda">
                 </div>
                 <div class="grup">
                     <label for="password">Password</label>
-                    <input type="password" placeholder="Masukkan password Anda">
+                    <input type="password" name="pass" placeholder="Masukkan password Anda">
                 </div>
                 <div class="grup">
                     <input type="submit" value="Sign In">

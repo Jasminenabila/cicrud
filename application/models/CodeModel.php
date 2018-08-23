@@ -7,7 +7,7 @@ class CodeModel extends CI_Model
 	}
 
 	public function all(){
-		return $this->db->get('code');
+		return $this->db->get('voucher')->result();
 	}
 
 	public function getWhere($where){
@@ -15,9 +15,9 @@ class CodeModel extends CI_Model
 
 	}
 
-	public function insert($data){
+	public function insert_code($table, $data){
 		// melakukan insert ke tabel code
-		return $this->db->insert('code',$data);
+		$this->db->insert($table, $data);
 	}
 	public function update($data,$where){
 		//melakukan update ke tabel code
