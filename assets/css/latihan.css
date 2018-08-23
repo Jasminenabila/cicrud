@@ -1,0 +1,32 @@
+.navbar-inverse {
+    background-color: #159478 !important;   
+    border-color: #159478 !important;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ecf0f1;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+.ml-auto {
+    margin-left: auto!important;
+}
+
+.navbar {
+    border-radius: unset !important;
+}
+
+.bgtable{
+	background: #eeeff1 !important;
+}
+body{
+	background: #1bbc9b;
+}
+
+.judulbk{
+	color: #0d745d;
+}
