@@ -1,0 +1,87 @@
+<tbody>
+<?php foreach($items->result() as $item):?>
+<?php if($item->status == 1):?>
+<tr style="background:#469008">
+<?php elseif($item->status = 0):?>
+<tr>
+<?php endif;?>
+<td><?=$x++;?></td>
+<td><?=$item->item_name;?></td>
+<td><?=$item->duration;?></td>
+<td><?=$item->count;?></td>
+<td><?=$item->hari;?></td>
+<?php if($item->status == 0):?>
+<td style="text-align:center"><a href="<?=base_url()?>pbwc/openitem/<?=$item->id?>">nonactive</a></td>
+<?php elseif($item->status = 1):?>
+<td style="text-align:center"><a href="<?=base_url()?>pbwc/closeitem/<?=$item->id?>">active</a></td>
+<?php endif;?>
+
+<?php if($item->status == 0):?>
+<td style="text-align:center"><a href="<?=base_url()?>pbwc/openitem/<?=$item->id?>">Buka Item</a></td>
+<?php elseif($item->status = 1):?>
+<td style="text-align:center"><a href="<?=base_url()?>pbwc/closeitem/<?=$item->id?>">Tutup Item</a></td>
+<?php endif;?>
+</tr>
+<?php endforeach;?>
+</tbody>
+
+
+
+<style type="text/css">
+		*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+ 
+body{
+    background: #c0c0c0;
+}
+ 
+div.konten{
+    background: #ffffff;
+    width: 350px;
+    margin: 222px auto 0;
+    border-radius: 16px;
+    min-height: 256px;
+    overflow: hidden;
+}
+ 
+div.kepala{
+    background: #f85252;
+    padding: 10px 22px;
+    height: 60px;
+}
+ 
+div.kepala h2.judul{
+    color: #fff;
+    font-weight: normal;
+    line-height: 40px;
+    display: inline-block;
+}
+ 
+div.lock{
+    background-image: url("lock.png");
+    background-position: center;
+    background-size: 38px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-top: 8px;
+    float: left;
+    margin-right: 10px;
+}
+ 
+div.artikel{
+    padding:10px 22px 0;
+    color: #808080;
+}
+ 
+div.artikel div.grup{
+    margin: 16px 0;
+}
+</style>
+
+
+

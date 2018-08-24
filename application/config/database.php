@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '10.10.12.13',
 	'username' => 'root',
-	'password' => '',
-	'database' => 'code',
+	'password' => 'admin',
+	'database' => 'esports_pb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -15,7 +15,10 @@ class Code extends CI_Controller{
 			$this->load->view('list', $data);
 		}
 
-
+		public function view_tambah()
+		{
+			$this->load->view('home');
+		}
 
 		// private function template($content, $data=null){
 		// 	$data['content'] = $this->load->view($content, $data, true);
@@ -40,90 +43,57 @@ class Code extends CI_Controller{
 				'status' => 0
 			);
 
-			$this->CodeModel->insert_code('voucher', $data);
+			$this->CodeModel->insert_code('pbnclp2018_voucher', $data);
 			redirect('code/index');
 		}
 
 		public function openitem() // buka item supaya voucher bisa digunakan
 		{
-			$ipaddress = $this->input->ip_address();//ngeload ip address
-			if($_SERVER['SERVER_ADDR'] == "103.248.57.44" || $_SERVER['SERVER_ADDR'] == "10.10.118.17")//masukin server nya berupa method server dengan kondisi if else
-			{
-				if($ipaddress == "115.85.78.13" || $ipaddress == "10.11.12.13" || $ipaddress == "10.11.12")// baru kondisi if else dengan ip address 
-				{
-					$id = $this->session->user_data('id'); // buat variabel id yang mengambil id dengan memakai session
-					$useradmin = $this->db->query('select * from voucher where id = "'.$id.'"'); // buat variabel useradmin ambil berdasarkan id 
-					if($useradmin->num_rows() == 1) // buat kondisi dri useradmin dengan baris pertama bernilai 1
+			$id = $this->uri->segment(3); // segment 3 yaitu <php item yang erada di view list
+			$cekstatusdulu = $this->db->query('select status from pbnclp2018_voucher where status = 1 ')->num_rows(); // cek status yang bernilai 1 saja di table voucher
+			//  echo $cekstatusdulu;
+			// die();
+					
+					if($cekstatusdulu < 1)// buat kondisi yang diatas apakah sudah bener apa belum
 					{
-						$id = $this->url->segment(3); // segment 3 yaitu <php item yang erada di view list
-						$cekstatusdulu = $this->db->query('select * status from voucher where status = 1 ')->num_rows(); // cek status yang bernilai 1 saja di table voucher
-						if($cekstatusdulu > 1)// buat kondisi yang diatas apakah sudah bener apa belum
-						{
-							//echo $cekstatusdulu; // buat cek apakah sudah bisa di cek apa belum
-							$data = array( // datanya disimpan dalam array
-								'status' => 1
-							);
+						//echo $cekstatusdulu; // buat cek apakah sudah bisa di cek apa belum
+						$data = array( // datanya disimpan dalam array
+							'status' => 1
+						);
 
-							$this->db->where('id', $id);// ambil id				
-							$this->db->update('voucher', $data);	// data di update
-						}
-
-						redirect('code / list'); // redirect halaman list
+						$this->db->where('id', $id);// ambil id				
+						$this->db->update('pbnclp2018_voucher', $data);
+						redirect("Code/index");// data di updat
 					}
 					else{
-						redirect('code/home'); // ke halaman home
+						redirect("Code/index");
 					}
-				}
-			}
-			else{
-				redirect('https://jasmine.garena.co.id/haha');
-				die();
-			}
 		}
 
 		public function closeitem()
 		{
-			$ipaddress = $this->input->ip_address();
-			if($_SERVER['SERVER_ADDR'] == "10.11.12" ||$_SERVER['SERVER_ADDR'] == "10.11.122.12" )
-			{
-				if($ipaddress == "10.12.13" || $ipaddress == "10.12.12" || $ipaddress == "10.13.14")
-				{
-					$id = $this->session->user_data('id');
-					$useradmin = $this->db->query('select * from voucher where id =  "'.$id.'"');
-					if($useradmin->num_rows() == 1)
-					{
-						$id = $this->url->segment(3);
-						$data = array(
-							'status' => 0
-						);
-						$this->db->where('id', $id);
-						$this->db->update('voucher', $data);
-					}
-					else{
-						redirect('code/list');
-					}
-				}
-				else{
-					redirect ('code/home');
-				}
-			}
-			else{
-				redirect('https://jasmine.garena.co.id/hoho');
-			}
-				
-		}
-
-		public function update_data()
-		{
-
-		}
-
-		public function hapus(){
-		if($this->uri->segment(3)) $this->codeModel->delete(array('id'=>$this->uri->segment(3)));
-		//kemudian dialihkan ke controller Buku method index
-		redirect('code');
+			//if($user_admin->num_rows() == 1){
+			$id = $this->uri->segment(3);
+			$data = array(
+				'status' => 0
+				);
+				$this->db->where('id', $id);
+				$this->db->update('pbnclp2018_voucher', $data);
+					redirect('Code/index');
+					// } 
+					// else 
+					// {
+					// redirect('Code/index');
+					// }
+		
 	}
 
-}
+		public function delete($id)
+		{
+			$this->load->model("CodeModel");
+			$this->CodeModel->deletecode($id);
+			redirect('Code/index');
+		}
+	}
 
 ?>
